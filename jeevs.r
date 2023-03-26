@@ -24,10 +24,15 @@ jeevs = function(d, a, h, counter_needed){
   z <- outer(graphx,graphy,graphf)
   
   #строим графики
-  contour(graphx,graphy, z, nlevels=15) 
-  points(a[1],a[2],col='black', pch=20, cex=2)
+    # 3d
+    par(mfcol=c(2,1))
+    persp(graphx,graphy,z)
+
+    # разрез
+    contour(graphx,graphy, z, nlevels=15) 
+    points(a[1],a[2],col='black', pch=20, cex=2)
   
-  while(h > d & counter <= counter_needed){
+    while(h > d & counter <= counter_needed){
     
     lr = which.max(c(f(a), f(a+e_x*h), f(a - e_x*h)))
     if(lr==2){
